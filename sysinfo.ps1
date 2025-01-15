@@ -1,3 +1,6 @@
+mkdir c:\buildArtifacts
+echo Azure-Image-Builder-Was-Here  > c:\buildArtifacts\systeminfo.txt
+
 $currentDate = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $hostname = $env:COMPUTERNAME
 $cpuName = (Get-CimInstance -ClassName Win32_Processor).Name
@@ -14,7 +17,7 @@ Disk size: $("{0:N2} GB" -f $diskSize)
 Ip address: $ipAddress
 "@
 
-$outputFile = "$env:USERPROFILE\Desktop\SystemInfo.txt"
+$outputFile = "c:\buildArtifacts\systeminfo.txt"
 $output | Out-File -FilePath $outputFile -Encoding UTF8
 
 Write-Host "All information is saved in the file: $outputFile"
